@@ -6,7 +6,7 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 16:29:08 by flseaill          #+#    #+#             */
-/*   Updated: 2017/11/24 16:34:07 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/11/24 20:33:41 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 /* Structure pour gerer les fichiers ? */
 struct	dirent* readdir(DIR* repertoire);
 
-
-int		ft_list_dir(char *path);
-
+int		ft_list_dir_dot(char *path);
+int		ft_list_dir(char *path, int opt_a);
+int		ft_list_dir_rec(char *path, int opt_a, int over);
