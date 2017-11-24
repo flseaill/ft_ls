@@ -6,97 +6,40 @@
 #    By: florianseailles <florianseailles@student.42.fr>+#+  +:+       +#+     #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/30 06:17:17 by flseaill          #+#    #+#              #
-#    Updated: 2017/04/22 02:29:04 by flseaill         ###   ########.fr        #
+#    Updated: 2017/11/24 16:28:30 by flseaill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = libft.a
-SRC += ft_atoi.c
-SRC += ft_bzero.c
-SRC += ft_countwords.c
-SRC += ft_intlen.c
-SRC += ft_isalnum.c
-SRC += ft_isalpha.c
-SRC += ft_isascii.c
-SRC += ft_isdigit.c
-SRC += ft_lenwords.c
-SRC += ft_islower.c
-SRC += ft_isneg.c
-SRC += ft_isprint.c
-SRC += ft_isspace.c
-SRC += ft_isupper.c
-SRC += ft_itoa.c
-SRC += ft_memalloc.c
-SRC += ft_memchr.c
-SRC += ft_memcmp.c
-SRC += ft_memcpy.c
-SRC += ft_memccpy.c
-SRC += ft_memdel.c
-SRC += ft_memmove.c
-SRC += ft_memset.c
-SRC += ft_printtab.c
-SRC += ft_putchar.c
-SRC += ft_putchar_fd.c
-SRC += ft_putendl.c
-SRC += ft_putendl_fd.c
-SRC += ft_putnbr.c
-SRC += ft_putnbr_fd.c
-SRC += ft_putstr.c
-SRC += ft_putstr_fd.c
-SRC += ft_strcat.c
-SRC += ft_strncat.c
-SRC += ft_strlcat.c
-SRC += ft_strchr.c
-SRC += ft_strrchr.c
-SRC += ft_strclr.c
-SRC += ft_strcmp.c
-SRC += ft_strncmp.c
-SRC += ft_strcpy.c
-SRC += ft_strncpy.c
-SRC += ft_strdel.c
-SRC += ft_strdup.c
-SRC += ft_strequ.c
-SRC += ft_strnequ.c
-SRC += ft_striter.c
-SRC += ft_striteri.c
-SRC += ft_strjoin.c
-SRC += ft_strlen.c
-SRC += ft_strmap.c
-SRC += ft_strmapi.c
-SRC += ft_strnew.c
-SRC += ft_strrev.c
-SRC += ft_strsplit.c
-SRC += ft_strstr.c
-SRC += ft_strnstr.c
-SRC += ft_strsub.c
-SRC += ft_strtrim.c
-SRC += ft_tolower.c
-SRC += ft_toupper.c
-SRC += ft_lstadd.c
-SRC += ft_lstdel.c
-SRC += ft_lstdelone.c
-SRC += ft_lstiter.c
-SRC += ft_lstmap.c
-SRC += ft_lstnew.c
-INC = includes/libft.h
-SRCO = $(SRC:.c=.o)
-CC = gcc
+
+NAME = ft_ls
+
 CFLAGS = -Wall -Wextra -Werror
+#INC = libft/libft.h
+
+CC = gcc -o
+
+SRCO = $(SRC:.c=.o)
+
+SRC += libft/libft.a
+SRC += main.c
+SRC += ft_list_dir.c
+SRC += ft_ls_a.c
+SRC += ft_ls_l.c
+SRC += ft_ls_r.c
+SRC += ft_ls_t.c
+SRC += ft_ls_rec.c
 
 all: $(NAME)
 
-re: fclean all
-
-.c.o:
-	@$(CC) $(CFLAGS) -o $@ -c $< -I $(INC)
-
-$(NAME): $(SRCO)
-	@ar rc $@ $^
-	@ranlib $@
+$(NAME):
+	make -C libft/
+	$(CC) $(NAME) $(CFLAGS) $(SRC)
 
 clean:
-	rm -rf $(SRCO)
+	make -C libft/ fclean
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
 
-.PHONY: all re clean fclean
+re: fclean $(NAME)
+
+.PHONY: all clean fclean re
