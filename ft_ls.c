@@ -6,7 +6,7 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 18:30:08 by flseaill          #+#    #+#             */
-/*   Updated: 2017/11/24 20:38:44 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/11/24 20:49:00 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ int		ft_list_dir(char *path, int opt_a)
 	DIR				*rep;
 	struct dirent	*readfile;
 
-	if (!(rep = opendir(path))
-	{
-		ft_putstr(path);
-	}
+	rep = opendir(path);
 	if (rep == NULL)
 	{
 		ft_putstr("ft_ls: ");
