@@ -6,7 +6,7 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 18:30:08 by flseaill          #+#    #+#             */
-/*   Updated: 2017/11/24 20:33:44 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/11/28 18:36:30 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_list_dir_dot(char *path)
 		exit(-1);
 	return (0);
 }
-
+/*
 int		main(int argc, char **argv)
 {
 	if (argc >= 2)
@@ -42,4 +42,4 @@ int		main(int argc, char **argv)
 	else if (argc == 1)
 		ft_list_dir_dot("./");
 	return (0);
-}
+}*/
