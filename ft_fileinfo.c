@@ -6,7 +6,7 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 17:50:11 by flseaill          #+#    #+#             */
-/*   Updated: 2017/11/30 20:20:27 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/12/04 19:54:46 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <sys/stat.h>
@@ -55,7 +55,13 @@ int		main(int argc, char **argv)
 	usergroup = getgrgid(user->pw_gid);
 	if (user)
 	{
-		ft_putstr("Type de fichier : ");
+		ft_putstr("Peripherique : ");
+		ft_putnbr(fileinfo.st_dev);
+		ft_putchar('\n');
+		ft_putstr("Type de peripherique : ");
+		ft_putnbr(fileinfo.st_rdev);
+		ft_putchar('\n');
+		ft_putstr("Droits du fichier : ");
 		ft_putnbr(fileinfo.st_mode);
 		ft_putchar('\n');
 		ft_putstr("Numero d'inoeud : ");
