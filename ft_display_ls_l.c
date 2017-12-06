@@ -6,7 +6,7 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 17:50:11 by flseaill          #+#    #+#             */
-/*   Updated: 2017/12/04 21:08:45 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/12/06 21:37:19 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <sys/stat.h>
@@ -47,9 +47,11 @@ struct tm {
 	int tm_isdst;
 };
 */
-
+// ATTENTION, NE GERE PAS LES LIENS, A RAJOUTER :
+// filename -> filelinked
+// filesize of the link and not the linked file
 void	ft_timeconvert(char *str);
-
+void	ft_filemode(char *filename);
 
 int		main(int argc, char **argv)
 {
@@ -58,43 +60,51 @@ int		main(int argc, char **argv)
 	struct group	*usergroup;
 	//struct tm		*time;
 	char			*time;
-
-		if (argc < 2)
-		{
-			ft_putendl(argv[1]);
-			exit(EXIT_FAILURE);
-		}
-	if (stat(argv[1], &fileinfo) == -1)
+	int i;
+	
+	i = 1;
+	if (argc < 2)
 	{
-		perror("stat");
-		exit(-1);
+		ft_putendl(argv[1]);
+		exit(EXIT_FAILURE);
 	}
-	user = getpwuid(fileinfo.st_uid);
-	usergroup = getgrgid(user->pw_gid);
-	time = ctime(&fileinfo.st_mtime);
-	if (user)
+	while (argv[i])
 	{
-		//		ft_putstr("Droits du fichier : ");
-		ft_putnbr(fileinfo.st_mode);
-		ft_putstr("         ");
-		//		ft_putstr("Nombre de liens : ");
-		ft_putnbr(fileinfo.st_nlink);
-		ft_putstr(" ");
-		//		ft_putstr("Proprietaire : ");
-		ft_putstr(user->pw_name);
-		ft_putstr("  ");
-		//		ft_putstr("Groupe du proprietaire : ");
-		ft_putstr(usergroup->gr_name);
-		ft_putstr("   ");
-		//		ft_putstr("Taille du fichier : ");
-		ft_putnbr(fileinfo.st_size);
-		ft_putstr(" ");
-		ft_timeconvert(time);
-		ft_putstr(" ");
-		//		ft_putstr("Nom du fichier : ");
-		ft_putstr(argv[1]);
-		ft_putchar('\n');
-		
+		if (stat(argv[i], &fileinfo) == -1)
+		{
+			perror(argv[i]);
+			exit(-1);
+		}
+		user = getpwuid(fileinfo.st_uid);
+		usergroup = getgrgid(user->pw_gid);
+		time = ctime(&fileinfo.st_mtime);
+		if (user)
+		{
+			//		ft_putstr("Droits du fichier : ");
+			ft_filemode(argv[i]);
+			ft_putchar(' ');
+			ft_putnbr(fileinfo.st_mode);
+			ft_putstr("         ");
+			//		ft_putstr("Nombre de liens : ");
+			ft_putnbr(fileinfo.st_nlink);
+			ft_putstr(" ");
+			//		ft_putstr("Proprietaire : ");
+			ft_putstr(user->pw_name);
+			ft_putstr("  ");
+			//		ft_putstr("Groupe du proprietaire : ");
+			ft_putstr(usergroup->gr_name);
+			ft_putstr("   ");
+			//		ft_putstr("Taille du fichier : ");
+			ft_putnbr(fileinfo.st_size);
+			ft_putstr(" ");
+			ft_timeconvert(time);
+			ft_putstr(" ");
+			//		ft_putstr("Nom du fichier : ");
+			ft_putstr(argv[i]);
+			ft_putchar('\n');
+		}
+		i++;
+	}
 		/*
 		//		ft_putstr("Derniere modification du fichier : ");
 		//ft_putstr(ctime(&fileinfo.st_mtime));
@@ -128,6 +138,5 @@ int		main(int argc, char **argv)
 		   ft_putstr("Creation du fichier : ");
 		   ft_putstr(ctime(&fileinfo.st_ctime));
 		   */
-	}
 	return (1);
 }
