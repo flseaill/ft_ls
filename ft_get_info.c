@@ -1,4 +1,4 @@
-#include "ft_ls/libft/libft.h"
+#include "libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -7,7 +7,7 @@ typedef struct Element Element;
 struct Element
 {
 	char	*filename;
-	char	*filesize;
+	int		filesize;
 	char	*filerights;
 	char	*m_date;
 	char	*c_date;
@@ -30,8 +30,8 @@ Liste *newlst_file()
 
 	if (liste == NULL || element == NULL)
 		return (NULL);
-	element->filename = "nom de fichier";
-	element->filesize = "taille du fichier";
+	element->filename = "filename";
+	element->filesize = "file size";
 	element->filerights = "droits";
 	element->m_date = "date de modif";
 	element->c_date = "date de creat";
@@ -84,7 +84,8 @@ void	*print_info(Liste *liste)
 		ft_putchar('\n');
 		ft_putendl(actuel->fileowner);
 		ft_putendl(actuel->filegroup);
-		ft_putendl(actuel->filesize);
+		ft_putnbr(actuel->filesize);
+		ft_putchar('\n');
 		ft_putendl(actuel->m_date);
 		ft_putendl(actuel->filename);
 		ft_putendl(actuel->c_date);
