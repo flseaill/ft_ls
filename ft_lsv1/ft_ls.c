@@ -6,7 +6,7 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 18:30:08 by flseaill          #+#    #+#             */
-/*   Updated: 2017/11/28 18:35:07 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/12/06 19:45:31 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_list_dir(char *path, int opt_a)
 		exit(-1);
 	return (0);
 }
-/*
+
 int		main(int argc, char **argv)
 {
 	int				opt_a;
@@ -50,4 +50,4 @@ int		main(int argc, char **argv)
 	else if (argc == 1)
 		ft_list_dir("./", opt_a);
 	return (0);
-}*/
+}

@@ -6,10 +6,11 @@
 /*   By: flseaill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 17:41:44 by flseaill          #+#    #+#             */
-/*   Updated: 2017/11/28 18:38:04 by flseaill         ###   ########.fr       */
+/*   Updated: 2017/12/06 18:20:03 by flseaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 void	ft_putstr(const char *str);
 void	ft_putendl(const char *str);
 int		ft_ls(char *str, int opt);
